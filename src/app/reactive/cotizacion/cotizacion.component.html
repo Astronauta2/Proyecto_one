@@ -1,0 +1,206 @@
+<div class="imagen">
+    <img src="assets/pexels-emma-bauso-2833394.png">
+
+</div>
+
+<div class="caja_principal">
+
+    <div class="caja_secundaria">
+
+        <div class="Encabezado">
+            <h1>COTIZACION ONLINE</h1>
+        </div>
+
+        <div class="sub_encabezado">
+            <h1>Ingresa tus datos personales</h1>
+        </div>
+
+        <div class="user">
+            <img src="assets/user.png">
+
+            <h1>01/02</h1>
+            <h2>Datos personales</h2>
+        </div>
+
+        <div class="users">
+            <img src="assets/users.png">
+
+            <h1>02/02</h1>
+            <h2>Beneficiarios</h2>
+
+        </div>
+
+        <div class="contenedor_form">
+            <header>Completa los siguientes datos
+
+                <img class="check" src="assets/check.png">
+            </header>
+
+            <form (ngSubmit)="guardar()" [formGroup]="miFormulario">
+                <div class="form first">
+                    <div class="details personal">
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Nombre</label>
+                                <input formControlName="nombre" type="text" placeholder="Ingrese su nombre por favor">
+
+                                <div class="text-danger">
+                                    <span *ngIf="campoNoEsValido('nombre')">
+                                        <!-- <h5> Todos los campos son obligatorios</h5> -->
+
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <div class="input-field">
+                                <label>Cuidad del servicio</label>
+                                <select formControlName="cuidades">
+
+                                    <option disabled selected> Seleccione la cuidad </option>
+                                    <option *ngFor="let tipo_de_cuidad of tipo_de_cuidades " [value]="tipo_de_cuidades">
+                                        {{
+                                        tipo_de_cuidad}}</option>
+                                    <div class="text-danger">
+                                        <span *ngIf="campoNoEsValido('cuidades')">
+                                            <!-- <h5> Todos los campos son obligatorios</h5> -->
+
+                                        </span>
+                                    </div>
+                                </select>
+
+
+                            </div>
+
+                            <div class="input-field">
+                                <label>Apellido</label>
+                                <input formControlName="apellido" type="text"
+                                    placeholder="Ingrese sus dos apellidos por favor">
+                                <div class="text-danger">
+                                    <span *ngIf="campoNoEsValido('apellido')">
+                                        <!-- <h5> Todos los campos son obligatorios</h5> -->
+
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Fecha de nacimiento</label>
+                                <input formControlName="fecha" type="date" placeholder="Enter birth date" required>
+                                <div class="text-danger">
+                                    <span *ngIf="campoNoEsValido('fecha')">
+                                        <!-- <h5> Todos los campos son obligatorios</h5> -->
+                                    </span>
+                                </div>
+                            </div>
+
+
+
+                            <div class="input-field">
+                                <label>Tipo de documento</label>
+                                <select formControlName="tipo_de_documento">
+
+                                    <option disabled selected> Seleccione el tipo </option>
+                                    <option *ngFor="let tipo_de_documento of tipo_de_documentos "
+                                        [value]="tipo_de_documentos">{{
+                                        tipo_de_documento}}</option>
+                                    <div class="text-danger">
+                                        <span *ngIf="campoNoEsValido('tipo_de_documento')">
+                                            <!-- <h5> Todos los campos son obligatorios</h5> -->
+                                        </span>
+                                    </div>
+                                </select>
+
+
+                            </div>
+
+
+
+                            <div class="codigo">
+                                <label>Telefono</label>
+                                <input formControlName="codigo" type="text" placeholder="+57">
+                                <div class="text-danger">
+                                    <span *ngIf="campoNoEsValido('codigo')">
+                                        <!-- <h5> Todos los campos son obligatorios</h5> -->
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="input-field">
+                                <label>Numero de documento</label>
+                                <input formControlName="numero_documento"
+                                    placeholder="Ingrese el numero de su documento por favor" type="number">
+                                <div class="text-danger">
+                                    <span *ngIf="campoNoEsValido('numero_documento')">
+                                        <!-- <h5> Todos los campos son obligatorios</h5> -->
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="input-field">
+                                <label>E-mail</label>
+                                <input formControlName="email" type="email" placeholder="ingrese su Email por favor">
+                                <div class="text-danger">
+                                    <span *ngIf="campoNoEsValido('email')">
+                                        <h5>Todos los campos son obligatorios</h5>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="telefono">
+                                <input formControlName="telefono" type="number"
+                                    placeholder="Ingrese su telefono por favor">
+
+                            </div>
+
+
+
+                            <div class="form-check">
+                                <input type="checkbox" formControlName="condiciones">
+                                <label>Incluirme como beneficiario/a</label>
+                                <div class="text-danger">
+                                    <span *ngIf="campoNoEsValido('condiciones')">
+                                        <!-- <h5>Todos los campos son obligatorios</h5> -->
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+            </form>
+        </div>
+
+
+
+
+
+        <div class="caja_tercera">
+            <div class="arrow">
+                <img src="assets/arrow.png">
+            </div>
+
+            <button (click)="guardar()" class="button">
+                <h1>
+                    Continuar
+                </h1>
+            </button>
+
+            <!-- Desactivar boton -->
+            <!-- [disabled]="miFormulario.invalid" -->
+
+
+        </div>
+
+    </div>
+
+</div>

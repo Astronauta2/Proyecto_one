@@ -1,10 +1,25 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+
+  {
+    path: 'reactive',
+    loadChildren: () => import('./reactive/reactive.module').then(m => m.ReactiveModule)
+  }, 
+
+  {
+    path: '**',
+    redirectTo: 'reactive'
+  }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {useHash: true, relativeLinkResolution:'legacy'})
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }
